@@ -14,4 +14,4 @@ RUN chmod +x /tailscale-start.sh
 EXPOSE 8080
 
 # CMD-ul
-CMD ["/app/tailscale-start.sh"]
+CMD ["/tailscale-start.sh"]
