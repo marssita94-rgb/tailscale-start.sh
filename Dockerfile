@@ -7,7 +7,7 @@ FROM node:18-alpine
 #WORKDIR /app
 
 # Copiază scriptul Tailscale
-COPY tailscale-start.sh /app/tailscale-start.sh
+COPY tailscale-start.sh 
 RUN chmod +x /tailscale-start.sh
 
 # Expune portul (dacă e cazul)
