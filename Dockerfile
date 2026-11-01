@@ -4,11 +4,11 @@ FROM node:18-alpine
 # Sau: FROM ubuntu:22.04
 
 # Setează directorul de lucru
-WORKDIR /app
+#WORKDIR /app
 
 # Copiază scriptul Tailscale
 COPY tailscale-start.sh /app/tailscale-start.sh
-RUN chmod +x /app/tailscale-start.sh
+RUN chmod +x /tailscale-start.sh
 
 # Expune portul (dacă e cazul)
 EXPOSE 8080
