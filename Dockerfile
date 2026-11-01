@@ -7,11 +7,10 @@ RUN curl -fsSL https://tailscale.com/install.sh | sh
 # RUN curl -o /usr/bin/tailscale -LO https://pkgs.tailscale.com/stable/tailscale_1.66.2_amd64.tgz
 # RUN tar -xzf tailscale_1.66.2_amd64.tgz tailscale && rm tailscale_1.66.2_amd64.tgz
 
-WORKDIR /app
 
-COPY tailscale-start.sh /app/tailscale-start.sh
-RUN chmod +x /app/tailscale-start.sh
+COPY tailscale-start.sh tailscale-start.sh
+RUN chmod +x tailscale-start.sh
 
 EXPOSE 8080
 
-CMD ["/app/tailscale-start.sh"]
+CMD ["tailscale-start.sh"]
