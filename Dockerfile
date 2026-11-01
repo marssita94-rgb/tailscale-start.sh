@@ -1,6 +1,27 @@
-FROM node:18-alpine
-WORKDIR /app
-COPY tailscale-start.sh /app/tailscale-start.sh
-RUN chmod +x /app/tailscale-start.sh
-CMD ["/app/tailscale-start.sh"]
+FROM debian:latest
+WORKDIR /render
+
+ARG TAILSCALE_VERSION
+ENV TAILSCALE_VERSION=$TAILSCALE_VERSION
+
+RUN apt-get -qq update \
+  && apt-get -qq install --upgrade -y --no-install-recommends \
+    apt-transport-https \
+    ca-certificates \
+    netcat-openbsd \
+    wget \
+    dnsutils \
+  > /dev/null \
+  && apt-get -qq clean \
+  && rm -rf \
+    /var/lib/apt/lists/* \
+    /tmp/* \
+    /var/tmp/* \
+  && :
+
+RUN echo "+search +short" > /root/.digrc
+
+COPY tailscale-start.sh /render/tailscale-start.sh
+RUN chmod +x /render/tailscale-start.sh
+CMD ["/render/tailscale-start.sh"]
 
