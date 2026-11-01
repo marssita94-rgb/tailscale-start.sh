@@ -1,4 +1,4 @@
-FROM debian:latest
+FROM tailscale/tailscale:latest
 WORKDIR /render
 
 RUN apt-get -qq update \
