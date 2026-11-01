@@ -1,8 +1,8 @@
 FROM tailscale/tailscale:latest
 
-WORKDIR /app
+WORKDIR /render
 
-COPY tailscale-start.sh /app/tailscale-start.sh
-RUN chmod +x /app/tailscale-start.sh
+COPY tailscale-start.sh /render/tailscale-start.sh
+RUN chmod +x /render/tailscale-start.sh
 
-CMD ["/app/tailscale-start.sh"]
+CMD ["/render/tailscale-start.sh"]
